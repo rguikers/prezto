@@ -28,12 +28,21 @@ zstyle ':prezto:load' pmodule \
   'terminal' \
   'editor' \
   'history' \
+  'syntax-highlighting' \
+  'history-substring-search' \
   'directory' \
   'spectrum' \
   'utility' \
   'completion' \
+  'homebrew' \
+  'osx' \
+  'git' \
+  'node' \
+  'python' \
+  'haskell' \
+  'tmux' \
+  'utility' \
   'prompt'
-
 #
 # Autosuggestions
 #
@@ -92,8 +101,7 @@ zstyle ':prezto:module:editor' key-bindings 'emacs'
 # Set the prompt theme to load.
 # Setting it to 'random' loads a random theme.
 # Auto set to 'off' on dumb terminals.
-zstyle ':prezto:module:prompt' theme 'sorin'
-
+zstyle ':prezto:module:prompt' theme 'superlinh'
 #
 # Ruby
 #
@@ -162,4 +170,15 @@ zstyle ':prezto:module:prompt' theme 'sorin'
 # zstyle ':prezto:module:tmux:auto-start' remote 'yes'
 
 # Integrate with iTerm2.
-# zstyle ':prezto:module:tmux:iterm' integrate 'yes'
+zstyle ':prezto:module:tmux:iterm' integrate 'yes'
+
+use () {
+    eval "$(docker-machine env $1)"
+}
+
+drmid() {
+    docker rmi $(docker images -f "dangling=true" -q)
+#    eval "$(docker rmi $(docker images -f dangling=true -q))"
+}
+
+[[ -s "$(brew --prefix dvm)/dvm.sh" ]] && source "$(brew --prefix dvm)/dvm.sh"
