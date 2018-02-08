@@ -34,14 +34,14 @@ zstyle ':prezto:load' pmodule \
   'spectrum' \
   'utility' \
   'completion' \
-  'homebrew' \
+  'fasd' \
   'osx' \
-  'git' \
   'node' \
   'python' \
-  'haskell' \
   'tmux' \
   'utility' \
+  'docker' \
+  'autosuggestions' \
   'prompt'
 #
 # Autosuggestions

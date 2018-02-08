@@ -77,3 +77,4 @@ fi
 
 TMPPREFIX="${TMPDIR%/}/zsh"
 export ANDROID_SDK_ROOT=/Users/rguikers/Library/Android/sdk
+export GRADLE_HOME=$(brew info gradle | grep /usr/local/Cellar/gradle | awk '{print $1}')
