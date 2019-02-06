@@ -31,17 +31,18 @@ zstyle ':prezto:load' pmodule \
   'environment' \
   'terminal' \
   'history' \
-  'syntax-highlighting' \
-  'history-substring-search' \
   'directory' \
   'spectrum' \
   'utility' \
-  'completion' \
   'fasd' \
-  'node' \
   'utility' \
+  'completion' \
+  'node' \
   'docker' \
   'autosuggestions' \
+  'syntax-highlighting' \
+  'history-substring-search' \
+  'contrib-prompt' \
   'prompt'
 
 
@@ -123,8 +124,9 @@ zstyle ':prezto:module:editor' key-bindings 'emacs'
 # Auto set to 'off' on dumb terminals.
 #zstyle ':prezto:module:prompt' theme 'superlinh'
 #zstyle ':prezto:module:prompt' theme 'powerlevel9k'
-zstyle ':prezto:module:prompt' theme 'pure'
+#zstyle ':prezto:module:prompt' theme 'pure'
 #zstyle ':prezto:module:prompt' theme 'minimal'
+zstyle ':prezto:module:prompt' theme 'spaceship'
 #
 # Python
 #
@@ -212,13 +214,5 @@ zstyle ':prezto:module:prompt' theme 'pure'
 # Integrate with iTerm2.
 zstyle ':prezto:module:tmux:iterm' integrate 'yes'
 
-use () {
-    eval "$(docker-machine env $1)"
-}
-
-drmid() {
-    docker rmi $(docker images -f "dangling=true" -q)
-#    eval "$(docker rmi $(docker images -f dangling=true -q))"
-}
-
 [[ -s "$(brew --prefix dvm)/dvm.sh" ]] && source "$(brew --prefix dvm)/dvm.sh"
+

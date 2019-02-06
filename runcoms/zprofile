@@ -33,7 +33,6 @@ fi
 # Paths
 #
 
-export GOPATH=/Users/rguikers/go
 
 # Ensure path arrays do not contain duplicates.
 typeset -gU cdpath fpath mailpath path
@@ -47,7 +46,6 @@ typeset -gU cdpath fpath mailpath path
 path=(
   /Users/rguikers/Library/Android/sdk/tools
   /usr/local/{bin,sbin}
-  /Users/rguikers/go/bin
   $path
 )
 

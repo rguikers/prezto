@@ -5,6 +5,9 @@
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
 
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
@@ -15,6 +18,12 @@ DEFAULT_USER=rguikers
 alias dm="docker-machine"
 
 export JAVA_HOME=$(/usr/libexec/java_home)
+
+export GOPATH="${HOME}/.go"
+export GOROOT="$(brew --prefix golang)/libexec"
+export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
+test -d "${GOPATH}" || mkdir "${GOPATH}"
+test -d "${GOPATH}/src/github.com" || mkdir -p "${GOPATH}/src/github.com"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
@@ -70,6 +79,25 @@ POWERLEVEL9K_COMMAND_EXECUTION_TIME_FOREGROUND='magenta'
 POWERLEVEL9K_BACKGROUND_JOBS_BACKGROUND='clear'
 POWERLEVEL9K_BACKGROUND_JOBS_FOREGROUND='green'
 
+SPACESHIP_PROMPT_ORDER=(
+  time          # Time stamps section
+  user          # Username section
+  dir           # Current directory section
+  host          # Hostname section
+  git           # Git section (git_branch + git_status)
+  node          # Node.js section
+  golang        # Go section
+  docker        # Docker section
+  venv          # virtualenv section
+  kubecontext   # Kubectl context section
+  exec_time     # Execution time
+  line_sep      # Line break
+  battery       # Battery level and status
+  jobs          # Background jobs indicator
+  exit_code     # Exit code section
+  char          # Prompt character
+)
 
-### Added by the Bluemix CLI
-source /usr/local/Bluemix/bx/zsh_autocomplete
+### Add bash complete for az, helm
+autoload -U +X bashcompinit && bashcompinit
+source /usr/local/etc/bash_completion.d/az
